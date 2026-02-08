@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Natália Joaquim, nº 219</title>
+    <style>
+        body {
+            color: black;
+            font-family: Arial;
+            line-height: 1.6;
+            max-width: 850px;
+            margin: auto;
+            padding: 0;
+        }
+
+        h1 {
+            color: #d35400;
+            border-bottom: 2px solid #d35400;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background: #fffcf9;
+        }
+
+        .answer {
+            color: #2c3e50;
+            font-style: italic;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background: #eef2f7;
+        }
+
+        .pratico {
+            background: #eef2f7;
+            border-left: 5px solid #003366;
+        }
+
+        img {
+            max-width: 100%;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-left: 0;
+            padding-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>💡 MER e DER — Exercícios Autônomos</h1>
+    <p>
+        Nesta atividade, você irá trabalhar com o cenário de uma aplicação de
+        gestão de tarefas, semelhante ao ClickUp ou Trello. Leia atentamente o
+        texto e depois resolva os exercícios.
+    </p>
+
+    <hr />
+
+    <h1>SISTEMA — APLICAÇÃO DE GESTÃO DE TAREFAS</h1>
+    <pre>
+Nossa aplicação permite que vários utilizadores registrem tarefas, projetos e comentários. 
+Cada <b>Utilizador</b> tem um nome, email, telefone, password e um identificador único.
+As <b>Tarefas</b> possuem um título, descrição, data de criação, data de conclusão, estado (Pendente, Em progresso, Concluída) e pertencem a um único utilizador. No entanto, uma tarefa pode estar associada a um projeto e ter múltiplos comentários.
+Um <b>Projeto</b> organiza várias tarefas e possui um nome, data de início, data de conclusão prevista e um identificador único.
+Os <b>Comentários</b> são feitos pelos utilizadores em tarefas específicas e possuem texto, data de criação e autor.
+Além disso, podemos classificar tarefas com <b>Etiquetas</b> (Tags), como "Urgente", "Bug", "Melhoria". Uma tarefa pode ter várias etiquetas e cada etiqueta pode estar em várias tarefas.
+</pre>
+
+    <h2>📝 Exercícios Autónomos — <b><u>Natália Joaquim, nº 219</u></b></h2>
+    <ol>
+        <li>Liste todas as entidades que você identifica neste sistema.</li>
+        <div class="answer"><b>R:</b>
+            <ul>
+                <li>Utilizador</li>
+                <li>Tarefa</li>
+                <li>Projeto</li>
+                <li>Comentário</li>
+                <li>Etiqueta (Tag)</li>
+            </ul>
+        </div>
+        <li>Para cada entidade, escreva os atributos essenciais.</li>
+        <div class="answer"><b>R:</b>
+            <ul>
+                <li><b>Utilizador</b> - ID, Nome, Email, Telefone, Password.</li>
+                <li><b>Tarefa</b> - ID, Título, Descrição, Data de Criação, Data de Conclusão, Estado.</li>
+                <li><b>Projeto</b> - ID, Nome, Data de Início, Fases, Data de Conclusão Prevista.</li>
+                <li><b>Comentário</b> - ID, Texto, Data de Criação, Autor.</li>
+                <li><b>Etiqueta (Tag)</b> - ID, Nome.</li>
+            </ul>
+        </div>
+        <li>Identifique as chaves primárias de cada entidade.</li>
+        </ul>
+        <div class="answer"><b>R:</b>
+            <ul>
+                <li><b>Utilizador</b> - id_utilizador.</li>
+                <li><b>Tarefa</b> - id_tarefa.</li>
+                <li><b>Projeto</b> - id_projeto.</li>
+                <li><b>Comentário</b> - id_comentario.</li>
+                <li><b>Etiqueta (Tag)</b> - id_etiqueta.</li>
+            </ul>
+        </div>
+        <li>
+            Identifique os possíveis relacionamentos entre as entidades e suas
+            cardinalidades (1:1, 1:N, N:M).
+        </li>
+        <div class="answer">
+            <b>R: Utilizador - Tarefa:</b> 1:N (Um utilizador cria várias tarefas mas uma tarefa pertence a um único
+            utilizador).
+            <br>
+            <b>Projeto - Tarefa:</b> 1:N (Um projeto tem várias tarefas e uma tarefa pode pertencer a zero ou a um
+            projeto).
+            <br>
+            <b>Tarefa - Comentário:</b> 1:N (Uma tarefa tem vários comentários mas um comentário pertence a uma única
+            tarefa).
+            <br>
+            <b>Utilizador - Comentário:</b> 1:N (Um utilizador pode fazer vários comentários e um comentário tem um
+            único autor).
+            <br>
+            <b>Tarefa - Etiqueta:</b> N:M (Uma tarefa pode ter várias etiquetas e uma etiqueta pode estar em várias
+            tarefas).
+        </div>
+        <li>
+            Quais atributos podem ser obrigatórios e quais podem ser opcionais?
+        </li>
+        <div class="answer"><b>R:</b> <b>Obrigatórios:</b> Nome (Utilizador), Email, Título (Tarefa), Estado, Nome
+            (Projeto), Texto (Comentário), Nome (Etiqueta).
+            <br>
+            <b>Opcionais:</b> Telefone (Utilizador), Descrição (Tarefa), Projeto (dependendo da regra de negócio, uma
+            tarefa pode ser avulsa).
+        </div>
+        <li>
+            Como você representaria a relação entre Tarefas e Projetos no DER?
+        </li>
+        <div class="answer"><img src="./DERs/ex6.png" alt=""></div>
+        <li>
+            Como você representaria a relação entre Tarefas e Comentários no DER?
+        </li>
+        <div class="answer"><img src="./DERs/EX7.png" alt=""></div>
+        <li>
+            Como você representaria a relação N:M entre Tarefas e Etiquetas no DER?
+        </li>
+        <div class="answer"><img src="./DERs/EX8.png" alt=""></div>
+        <li>
+            Desenhe o DER completo incluindo Utilizadores, Tarefas, Projetos,
+            Comentários e Etiquetas.
+        </li>
+        <div class="answer"><img src="./DERs/EX9.png" alt=""></div>
+        <li>
+            Liste algumas regras de negócio que o DER deve respeitar, como:
+            <ul>
+                <li>Uma tarefa deve sempre pertencer a um utilizador</li>
+                <li>Uma tarefa pode não estar em nenhum projeto</li>
+                <li>Um comentário deve ter autor e tarefa associada</li>
+                <li>Uma etiqueta pode existir sem estar associada a nenhuma tarefa</li>
+                <div class="answer"><b>R:</b> 
+                    <br>
+                    Uma tarefa não pode ser criada sem um utilizador responsável.
+                    <br>
+                    Data de conclusão de uma tarefa não pode ser anterior à data de criação da mesma tarefa.
+                    <br>
+                    Um projeto ou utilizador não podem ser excluídos se houver tarefas ativas.
+                </div>
+            </ul>
+        </li>
+        <li>
+            Imagine que um utilizador muda de email. Onde você armazenaria essa
+            informação para evitar inconsistências?
+        </li>
+        <div class="answer"><b>R:</b> O email é armazenado apenas na entidade Utilizador. Como as outras tabelas
+            também fazem referência o id_utilizador e não ao email, a alteração é feita em um único lugar
+            sem causar inconsistências.</div>
+        <li>
+            Se um projeto for apagado, o que deve acontecer com as tarefas
+            associadas a ele?
+        </li>
+        <div class="answer"><b>R:</b> Dependendo da regra de negócio, esta exclusão pode ser impossível ou deve haver um alerta para que avise que as tarefas ficarão sem projeto.</div>
+        <li>
+            Se uma tarefa for marcada como concluída, devemos atualizar apenas a
+            tarefa ou algum outro registro também?
+        </li>
+        <div class="answer"><b>R:</b> O estado será modificado para concluído e a data de conclusão será preenchida. Pode haver também futuramente uma nova entidade contendo um log de atividade que cria uma nova entrada com essas informações de alteração sobre a tarefa.</div>
+        <li>
+            Como você trataria o histórico de alterações das tarefas (ex: mudança de
+            estado, alteração de descrição)?
+        </li>
+        <div class="answer"><b>R:</b> Criaria uma nova entidade chamada Historico_Tarefa (ID, id_tarefa, campo_alterado, data_alteracao). Cada vez que uma tarefa fosse editada de alguma forma, um registro seria criado aqui.</div>
+        <li>
+            Descreva como as regras de integridade referencial devem ser aplicadas neste sistema.
+        </li>
+        <div class="answer"><b>R:</b> Deve ser aplicada através de Chaves Estrangeiras (Foreing Keys). Isso garante diversas coisas, entre elas: que não seja possível criar um comentário para uma tarefa que não existe, que não se apague um utilizador que possua tarefas pendentes sem antes decidir como proceder com essas tarefas.
+</div>
+    </ol>
+
+    <hr />
+
+    <h2>🎯 Objetivos da Aula</h2>
+    <p>
+        ✔ Identificar entidades, atributos e relacionamentos<br />
+        ✔ Entender chaves primárias, estrangeiras e obrigatoriedade<br />
+        ✔ Praticar cardinalidades e relações 1:N e N:M<br />
+        ✔ Modelar DER completo para uma aplicação de tarefas<br />
+        ✔ Pensar em regras de negócio e integridade referencial
+    </p>
+</body>
+
+</html>
